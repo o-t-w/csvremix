@@ -1,0 +1,149 @@
+  /* ---- reset styles*/
+
+  input, button {
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  legend {
+    padding: 0;
+  }
+
+input[type="radio"] {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    background-color: #fbfbfd;
+    color: rgb(35,35,35);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+/* ---- global styles*/
+
+nav {
+    height: 52px;
+    background-color: oklch(0.96 0 0 / 0);
+    backdrop-filter: blur(5px);
+}
+
+  body {
+    font-family: system-ui;
+  }
+ 
+  /* ---- proper styles*/
+
+label {
+    display: block;
+    width: fit-content;
+  }
+  
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  main {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: 24px;
+    color: #444444;
+    margin: 0;
+}
+
+  .width-4-char {
+    width: 56px;
+  }
+
+  .form {
+    padding: 32px 24px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0, .05);
+    border-radius: 8px;
+    width: fit-content;
+  }
+
+  .glass-effect {
+    background-color: oklch(0.96 0 0 / 0);
+    backdrop-filter: blur(5px);
+    padding: 16px;
+    border-radius: 12px;
+    border: solid 1px #fcfcfc;
+    box-shadow: 0 1px 6px rgba(0,0,0,.1);
+    display: contents;
+  }
+
+  main {
+    display: grid;
+    justify-content: center;
+    align-items: start;
+    gap: 48px;
+    margin-block: auto;
+  }
+
+  @media (min-width: 1210px) {
+    main {
+      grid-template-columns: max-content max-content;
+    }
+
+    .form {
+      min-width: 600px;
+    }
+
+    .results-container {
+      padding: 32px 52px;
+    }
+  }
+
+  @media(min-width: 500px) {
+    .form {
+      padding: 32px 52px;
+    }
+
+    .glass-effect {
+      display: block;
+    }
+
+    main {
+      padding: 24px;
+    }
+  }
+
+  body {
+    min-height: 100lvh;
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("lineswaves.avif");
+  }
+
+  legend {
+    font-weight: 500;
+  }
+
+    .results-container {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0, .05);
+      padding: 32px 24px;
+      border-radius: 8px;
+      width: fit-content;
+    }
+
+  /* utilities */
+
+  .font-small {
+    font-size: 14px;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }

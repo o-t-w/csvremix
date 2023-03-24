@@ -1,0 +1,253 @@
+:root {
+  --off-white: #fafafa;
+  --blue: rgb(29 94 205);
+  --focus-color: #1C7FFF;
+}
+
+/* ---- reset styles*/
+input, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+legend {
+  padding: 0;
+}
+
+input[type=radio] {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background-color: #fbfbfd;
+  color: rgb(35, 35, 35);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ---- global styles*/
+nav {
+  height: 52px;
+  background-color: oklch(0.96 0 0/0);
+  backdrop-filter: blur(5px);
+}
+
+body {
+  font-family: system-ui;
+}
+
+/* ---- proper styles*/
+label {
+  display: block;
+  width: fit-content;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 24px 16px;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 24px;
+  color: #444444;
+  margin: 0;
+}
+
+.width-4-char {
+  width: 56px;
+}
+
+.form {
+  padding: 32px 24px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.glass-effect {
+  background-color: oklch(0.96 0 0/0);
+  backdrop-filter: blur(5px);
+  padding: 16px;
+  border-radius: 12px;
+  border: solid 1px #fcfcfc;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  display: contents;
+}
+
+main {
+  display: grid;
+  justify-content: center;
+  align-items: start;
+  gap: 48px;
+  margin-block: auto;
+}
+
+@media (min-width: 1210px) {
+  main {
+    grid-template-columns: max-content max-content;
+  }
+  .form {
+    min-width: 600px;
+  }
+  .results-container {
+    padding: 32px 52px;
+  }
+}
+@media (min-width: 500px) {
+  .form {
+    padding: 32px 52px;
+  }
+  .glass-effect {
+    display: block;
+  }
+  main {
+    padding: 24px;
+  }
+}
+body {
+  min-height: 100lvh;
+  display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("public/lineswaves.avif");
+}
+
+legend {
+  font-weight: 500;
+}
+
+.results-container {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 32px 24px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+/* utilities */
+.font-small {
+  font-size: 14px;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.button {
+  color: rgb(45, 45, 45);
+  user-select: none;
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15.5px;
+  width: fit-content;
+  border: solid 1px rgba(0, 0, 0, 0.08);
+  background-image: linear-gradient(#f6f6f6, var(--off-white));
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0px 0px rgba(0, 0, 0, 0.05), inset 0 0 2px 0.5px white;
+}
+.button :hover {
+  cursor: pointer;
+}
+.button :focus-visible {
+  outline-offset: 1px;
+  outline: solid 2px var(--focus-color);
+}
+.button svg {
+  width: 16px;
+  position: relative;
+  top: 1px;
+}
+.button * {
+  pointer-events: none;
+}
+
+.cta {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0px 0px rgba(0, 0, 0, 0.05);
+  color: rgb(38, 72, 130);
+  background-image: linear-gradient(#d4ebff, #c3e1fa);
+  border: solid 1px #c3e1fa;
+  box-shadow: 0px 1px 1px #a3bace;
+  text-shadow: none;
+}
+
+.radio {
+  display: flex;
+  gap: 6px;
+  width: fit-content;
+  border-radius: 4px;
+}
+
+.radio:hover {
+  cursor: pointer;
+}
+
+.radio input {
+  accent-color: var(--blue);
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 1px;
+}
+
+.radio:has(:focus-visible) {
+  outline: solid 2px var(--focus-color);
+  outline-offset: 1px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 24px;
+}
+
+input[type=radio]:focus-visible {
+  outline: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=text]:focus, input[type=number]:focus {
+  border-color: var(--focus-color);
+}
+
+.file-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-selector label:has(:focus-visible) {
+  outline-offset: 1px;
+  outline: solid 2px var(--focus-color);
+}
+
+input[type=text], input[type=number] {
+  border: solid 2px rgba(9, 30, 66, 0.1411764706);
+  border-radius: 3px;
+  padding: 8px;
+  height: 32px;
+}
+
+/*# sourceMappingURL=main.css.map */

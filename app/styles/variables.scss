@@ -1,0 +1,10 @@
+:root {
+    --off-white: #fafafa;
+    --blue: rgb(29 94 205);
+    --focus-color: #1C7FFF;
+    }
+
+    @mixin focus {
+        outline-offset: 1px;
+        outline: solid 2px var(--focus-color);
+    }
