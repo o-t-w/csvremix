@@ -16,7 +16,7 @@ export const meta = () => ({
 import customstyles from "./main.css";
 import styles from "./tailwind.css";
 
-export const links = () =>[{ rel: "stylesheet", href: styles }, { rel: "stylesheet", href: customstyles }];
+export const links = () =>[{ rel: "stylesheet", href: customstyles }, { rel: "stylesheet", href: styles }];
 
 export default function App() {
   return (

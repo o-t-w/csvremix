@@ -1,6 +1,7 @@
   /* ---- reset styles*/
 
-  input, button {
+  input,
+  button {
     font-family: inherit;
     font-size: inherit;
   }
@@ -9,14 +10,14 @@
     padding: 0;
   }
 
-input[type="radio"] {
+  input[type="radio"] {
     margin: 0;
-}
+  }
 
-body {
+  body {
     margin: 0;
     background-color: #fbfbfd;
-    color: rgb(35,35,35);
+    color: rgb(35, 35, 35);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -24,25 +25,25 @@ body {
     box-sizing: border-box;
   }
 
-/* ---- global styles*/
+  /* ---- global styles*/
 
-nav {
+  nav {
     height: 52px;
     background-color: oklch(0.96 0 0 / 0);
     backdrop-filter: blur(5px);
-}
+  }
 
   body {
     font-family: system-ui;
   }
- 
+
   /* ---- proper styles*/
 
-label {
+  label {
     display: block;
     width: fit-content;
   }
-  
+
   fieldset {
     border: 0;
     margin: 0;
@@ -60,7 +61,7 @@ label {
     font-size: 24px;
     color: #444444;
     margin: 0;
-}
+  }
 
   .width-4-char {
     width: 56px;
@@ -70,7 +71,7 @@ label {
     padding: 32px 24px;
     margin: auto;
     background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0, .05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .05);
     border-radius: 8px;
     width: fit-content;
   }
@@ -81,7 +82,7 @@ label {
     padding: 16px;
     border-radius: 12px;
     border: solid 1px #fcfcfc;
-    box-shadow: 0 1px 6px rgba(0,0,0,.1);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .1);
     display: contents;
   }
 
@@ -126,20 +127,24 @@ label {
     display: flex;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("lineswaves.avif");
+  //   background-image: image-set(
+  //     "/lineswaves.avif" type("image/avif"),
+  //     "/lineswaves.jpg" type("image/jpeg"));
+    background-image: url("/lineswaves.jpg");
   }
+
 
   legend {
     font-weight: 500;
   }
 
-    .results-container {
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0, .05);
-      padding: 32px 24px;
-      border-radius: 8px;
-      width: fit-content;
-    }
+  .results-container {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .05);
+    padding: 32px 24px;
+    border-radius: 8px;
+    width: fit-content;
+  }
 
   /* utilities */
 

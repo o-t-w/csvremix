@@ -4,7 +4,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "concurrently \"npm run sass\" \"remix dev\"",
-     "sass": "sass --watch app/styles/main.scss app/main.css",
+    "sass": "sass --watch app/styles/main.scss app/main.css",
     "start": "remix-serve build",
     "typecheck": "tsc"
   },
@@ -13,8 +13,10 @@
     "@remix-run/react": "^1.14.3",
     "@remix-run/serve": "^1.14.3",
     "isbot": "^3.6.5",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remix-utils": "^6.0.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.14.3",

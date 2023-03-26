@@ -1,15 +1,19 @@
 .radio {
-    display: flex;
-    gap: 6px;
-    width: fit-content;
-    border-radius: 4px;
-  }
+  display: flex;
+  gap: 6px;
+  width: fit-content;
+  border-radius: 4px;
 
-  .radio:hover {
+  &:hover {
     cursor: pointer;
   }
 
-  .radio input {
+  &:has(:focus-visible) {
+    outline: solid 2px var(--focus-color);
+    outline-offset: 1px;
+  }
+
+  input {
     accent-color: var(--blue);
     pointer-events: none;
     width: 16px;
@@ -17,13 +21,9 @@
     position: relative;
     top: 1px;
   }
+}
 
-  .radio:has(:focus-visible) {
-    outline: solid 2px var(--focus-color);
-    outline-offset: 1px;
-  }
-
-  .radio-group {
-    display: flex;
-    gap: 24px;
-  }
+.radio-group {
+  display: flex;
+  gap: 24px;
+}
