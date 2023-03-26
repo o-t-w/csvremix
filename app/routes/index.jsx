@@ -7,6 +7,7 @@ export default function Index() {
 
   const [filename, setFileName] = useState(false);
   const [result, setResult] = useState(null);
+  const [downloadLink, setDownloadLink] = useState(null);
 
   function handleFileUpload(event) {
     const file = event.target.files[0];
@@ -23,9 +24,11 @@ export default function Index() {
     const column = formData.get('column').toUpperCase();
     const method = formData.get('method');
     Papa.parse(file, {complete: function(results) {
+      console.log(results.data);
      const releventColumnIndex = results.data[0].indexOf(column);
      const releventColumn = results.data.map(row => row[releventColumnIndex]);
      const releventRows = releventColumn.slice(firstRow, lastRow);
+     console.log(releventRows);
      if (method == 1) {
       setResult(releventRows.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0));
       } 
@@ -37,6 +40,14 @@ export default function Index() {
         setResult(releventRows.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0))
       }
 
+      const releventRowsEachInArray = releventRows.map(row => [row]);
+  
+      const dataAsCSV = Papa.unparse({
+        "fields": [column],
+        "data": releventRowsEachInArray
+      });
+      const csvBlob = new Blob([dataAsCSV], {type: 'text/csv;charset=utf-8;'});
+      setDownloadLink(URL.createObjectURL(csvBlob));
     }})
   }  
   
@@ -111,7 +122,7 @@ export default function Index() {
                 <h1 style={{borderBottom: "solid 1px rgba(0,0,0,.08)"}} className="mb-6 pb-2">Result</h1>
                 <output className="text-4xl" htmlFor="start end column">{result}</output>
                <div className="flex gap-3 mt-5">
-                <a className="button cta" download href="output.csv">
+                <a className="button cta" download href={downloadLink}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Download CSV
                 </a>
               
