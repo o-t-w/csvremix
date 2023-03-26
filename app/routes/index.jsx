@@ -1,17 +1,10 @@
 import { useState } from 'react';
-import { useLoaderData } from '@remix-run/react';
 import { useHydrated } from "remix-utils";
 import * as Papa from 'papaparse';
 
-export async function loader() {
-  return { message: "Hello World" }
-}
-
 export default function Index() {
   const hydrated = useHydrated() 
-  let message = useLoaderData().message;
 
-  const [showResult, setShowResult] = useState(false);
   const [filename, setFileName] = useState(false);
   const [result, setResult] = useState(null);
 
@@ -26,32 +19,25 @@ export default function Index() {
   
     const file = event.target.querySelector('input[type="file"]').files[0];
     const firstRow = formData.get('start');
-    const lastRow = formData.get('end');
-    const column = formData.get('column');
+    const lastRow = parseFloat(formData.get('end')) + 1;
+    const column = formData.get('column').toUpperCase();
     const method = formData.get('method');
-    console.log(method);
     Papa.parse(file, {complete: function(results) {
-      console.log(method == 1);
-    //  console.log(results.data);
      const releventColumnIndex = results.data[0].indexOf(column);
-     const releventColumns = results.data.map(row => row[releventColumnIndex]);
-    //  console.log(releventColumns);
-     const releventRows = releventColumns.slice(firstRow, lastRow + 1);
-     console.log(releventRows);
+     const releventColumn = results.data.map(row => row[releventColumnIndex]);
+     const releventRows = releventColumn.slice(firstRow, lastRow);
      if (method == 1) {
-      const calculatedResult = releventRows.reduce((accumulator, currentValue) => {return accumulator + parseInt(currentValue)}, 0);
-      console.log(`the result is ${calculatedResult}`);
-      setResult(calculatedResult);
+      setResult(releventRows.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0));
       } 
-      else if (method === 2) {
-        setResult(releventRows.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue)))
+      else if (method == 2) {
+       const total = releventRows.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0);
+       setResult(total / releventRows.length);
       } 
-      else if (method === 3) {
-        setResult(releventRows.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue)))
+      else if (method == 3) {
+        setResult(releventRows.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0))
       }
 
     }})
-    setShowResult(true);
   }  
   
   function handleShare() {
@@ -98,19 +84,19 @@ export default function Index() {
                      
                  
                      <label className="mt-6" htmlFor="column">Column</label>
-                     <input name="column" id="column" className="mt-1 width-4-char" pattern="[a-zA-Z]" maxLength="1" type="text" />
+                     <input required name="column" id="column" className="mt-1 width-4-char" pattern="[a-zA-Z]" maxLength="1" type="text" />
                  
                      <fieldset className="mt-6">
                         <legend>Select rows:</legend>
                     <div className="flex gap-6 mt-1">
                     <div>
                     <label className="font-small" htmlFor="start">Start</label>
-                     <input name="start" id="start" className="width-4-char mt-1" type="number" />
+                     <input required name="start" id="start" className="width-4-char mt-1" type="number" />
                     </div>
                  
                      <div>             
                          <label className="font-small" htmlFor="end">End</label>
-                         <input name="end" id="end" className="width-4-char mt-1" type="number" />
+                         <input required name="end" id="end" className="width-4-char mt-1" type="number" />
                      </div>
                     </div> 
                 </fieldset>
@@ -120,7 +106,7 @@ export default function Index() {
             </div>
             
             
-            <div style={{opacity: showResult ? '100%' : '0%'}}  className="glass-effect">
+            <div style={{opacity: result !== null ? '100%' : '0%'}}  className="glass-effect">
                <div className="results-container">
                 <h1 style={{borderBottom: "solid 1px rgba(0,0,0,.08)"}} className="mb-6 pb-2">Result</h1>
                 <output className="text-4xl" htmlFor="start end column">{result}</output>
