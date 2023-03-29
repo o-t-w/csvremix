@@ -1,4 +1,4 @@
-This is a Remix project. To preview locally you should be able to run and npm install followed by 
+This is a Remix project. To preview locally do an npm install followed by 
 
 ```sh
 npm run dev
