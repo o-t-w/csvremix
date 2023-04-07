@@ -85,7 +85,7 @@ export default function Index() {
                          <legend className="mb-3">Select a Method:</legend>   
                           
                            <label className="radio" htmlFor="one"> <input type="radio" id="one" name="method" value="1"
-                             /><span>Method 1</span></label>
+                             /><span>Total</span></label>
                          
                            <label className="radio" htmlFor="two"> <input type="radio" id="two" name="method" value="2"/><span>Method 2</span></label> 
                           
